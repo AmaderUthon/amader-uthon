@@ -4,7 +4,6 @@
   padding: 0;
   overflow: hidden;
   min-height: 390px;
-  background: #8d3f32;
 }
 
 .cover img {
@@ -12,3 +11,25 @@
   height: 390px;
   object-fit: cover;
   display: block;
+}
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0,0,0,0.28);
+  color: white;
+}
+
+.cover-overlay h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+.cover-overlay p {
+  font-size: 18px;
+}
