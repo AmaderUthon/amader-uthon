@@ -1,2 +1,2 @@
 # আমাদের উঠোন - আড্ডাঘরের নিজস্ব পত্রিকা
-A complete family website that brings together our loved ones, cherished memories, stories, creativity, photographs, and special moments—all in one place.
+আমাদের আপনজনদের ভালোবাসা, লালিত স্মৃতি, জীবনের গল্প, সৃজনশীলতার প্রকাশ, অমূল্য আলোকচিত্র এবং অসংখ্য বিশেষ মুহূর্তকে একত্রে ধারণ করে রাখা—আমাদের পরিবারের নিজস্ব এক অনন্য ঠিকানা।
