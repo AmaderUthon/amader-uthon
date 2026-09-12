@@ -1,0 +1,1 @@
+document.querySelector('.menu-toggle')?.addEventListener('click',()=>document.querySelector('.nav')?.classList.toggle('open'));document.getElementById('themeToggle')?.addEventListener('click',()=>document.body.classList.toggle('dark'));
