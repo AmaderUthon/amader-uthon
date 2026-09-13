@@ -59,16 +59,17 @@ function driveImageURL(url) {
 
   url = String(url).trim();
 
-  // File ID বের করার চেষ্টা
+  // Google Drive file ID বের করা
   let match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
   if (!match) match = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
   if (!match) match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
 
   if (match && match[1]) {
-    return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1200`;
+    const id = match[1];
+    // এই URL-টি সাধারণত Google Drive-এর ছবিকে সরাসরি দেখায়
+    return `https://drive.google.com/uc?export=view&id=${id}`;
   }
 
-  // ইতিমধ্যে সরাসরি image URL হলে সেটিই ব্যবহার করবে
   if (/^https?:\/\//i.test(url)) return url;
   return '';
 }
@@ -145,12 +146,20 @@ async function loadPublishedPosts() {
       const imageURLs = imageI !== null ? getImageURLs(row[imageI]) : [];
 
       const imageHTML = imageURLs.length
-        ? `<div class="sheet-post-images">${imageURLs.map(url => `
+        ? `<div class="sheet-post-images">${imageURLs.map(url => {
+            const idMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+            const id = idMatch ? idMatch[1] : '';
+            const fallback = id
+              ? `https://drive.google.com/thumbnail?id=${id}&sz=w1200`
+              : '';
+            return `
             <a href="${escapeHTML(url)}" target="_blank" rel="noopener">
               <img src="${escapeHTML(url)}" alt="${title}" loading="lazy"
                    style="max-width:100%;height:auto;border-radius:12px;margin:12px 0;display:block;"
-                   onerror="this.parentElement.style.display='none';">
-            </a>`).join('')}</div>`
+                   ${fallback ? `data-fallback="${escapeHTML(fallback)}"` : ''}
+                   onerror="if(this.dataset.fallback && this.src !== this.dataset.fallback){this.src=this.dataset.fallback;}else{this.alt='ছবিটি Google Drive থেকে দেখা যাচ্ছে না';this.style.display='none';}">
+            </a>`;
+          }).join('')}</div>`
         : '';
 
       return `
