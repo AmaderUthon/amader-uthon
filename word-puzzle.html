@@ -1,25 +1,53 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>শব্দছক | দোতলার বারান্দা</title>
-<style>
-*{box-sizing:border-box}body{margin:0;padding:20px;font-family:"Noto Sans Bengali","Nirmala UI",sans-serif;background:linear-gradient(135deg,#fff8e7,#eaf7ff);color:#2d2d2d}.wrap{max-width:850px;margin:auto}.card{background:#ffffffee;border-radius:22px;padding:24px;box-shadow:0 8px 25px #00000014;margin-bottom:20px}h1{text-align:center;color:#7b3f00;margin-top:0}h2{color:#176b87}.intro{text-align:center;line-height:1.9}.poem{background:#fff4c7;border-left:5px solid #f0a500;padding:16px 20px;border-radius:12px;line-height:2;text-align:center;font-size:18px}.clues{line-height:2.1;background:#f1fbff;padding:15px;border-radius:12px}label{display:block;margin:12px 0 5px;font-weight:bold}input[type=text]{width:100%;padding:11px;border:1px solid #bbb;border-radius:8px;font-size:16px}button{border:0;border-radius:10px;padding:12px 18px;margin:12px 6px 0 0;font-size:16px;cursor:pointer;background:#176b87;color:white}button.secondary{background:#e39a19}#result{font-weight:bold;margin-top:15px;font-size:18px}.back{text-align:center}.back a{color:#176b87;text-decoration:none;font-weight:bold}
-</style>
-</head>
-<body><div class="wrap">
-<div class="card"><h1>🧩 মজার শব্দছক</h1><p class="intro">দোতলার বারান্দায় আজ একটু বুদ্ধির ব্যায়াম হোক! প্রশ্নের উত্তর ভেবে নিচের ঘরগুলো পূরণ করুন।</p>
-<div class="poem"><b>শব্দছকের মজার ছড়া</b><br>ঘরে বসে বুদ্ধি খাটাও,<br>শব্দ ধরে জালটা পাতাও।<br>আড়াআড়ি, ওপর-নিচ,<br>ভুল হলে নেই কোনো পীচ!<br>মাথা চুলকাও, হাসি ছড়াও,<br>ঠিক উত্তরটি খুঁজে পাও।<br>দোতলার এই বারান্দায়,<br>শব্দের খেলা জমুক হায়!</div></div>
-<div class="card"><h2>✍️ প্রশ্নগুলোর উত্তর দিন</h2><div class="clues"><b>১।</b> বাংলার জাতীয় ফুল কী? (৩ অক্ষর)<br><b>২।</b> রবীন্দ্রনাথের উপাধি কী? (৩ অক্ষর)<br><b>৩।</b> রাতে আকাশে কী জ্বলে? (৩ অক্ষর)</div>
-<label for="a1">১ নম্বর উত্তর</label><input id="a1" type="text" placeholder="উত্তর লিখুন">
-<label for="a2">২ নম্বর উত্তর</label><input id="a2" type="text" placeholder="উত্তর লিখুন">
-<label for="a3">৩ নম্বর উত্তর</label><input id="a3" type="text" placeholder="উত্তর লিখুন">
-<button onclick="checkAnswers()">✅ উত্তর যাচাই করুন</button><button class="secondary" onclick="showAnswers()">💡 উত্তর দেখুন</button><div id="result"></div></div>
-<div class="card"><h2>🎯 ছোট্ট চ্যালেঞ্জ</h2><p>আপনার নিজের একটি বাংলা শব্দ ভাবুন, যেটি পরিবারের অন্যরা সহজে ধরতে পারবে না।</p></div>
-<div class="back"><a href="index.html">← দোতলার বারান্দার মূল পাতায় ফিরে যান</a></div></div>
-<script>
-function clean(v){return v.trim().replace(/\s+/g,'')}
-function checkAnswers(){let g=[clean(a1.value),clean(a2.value),clean(a3.value)],s=0;if(g[0]==='শাপলা'||g[0]==='শাপলাফুল')s++;if(g[1]==='গুরুদেব')s++;if(g[2]==='তারা')s++;result.textContent='আপনার স্কোর: '+s+'/3 '+(s===3?'🎉 অসাধারণ!':s===2?'👏 খুব ভালো!':'🙂 আবার চেষ্টা করুন!')}
-function showAnswers(){result.textContent='উত্তর: ১। শাপলা | ২। গুরুদেব | ৩। তারা'}
-</script></body></html>
+<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>শব্দছক-১ | দোতলার বারান্দা</title>
+<style>body{margin:0;background:#f7f3ea;color:#292929;font-family:"Noto Sans Bengali","Nirmala UI",sans-serif;line-height:1.8}.wrap{max-width:900px;margin:auto;padding:18px}.card{background:#fff;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 4px 18px #0001}h1,h2{text-align:center;color:#6d3b16}.poem{white-space:pre-line;text-align:center;background:#fff8d9;padding:18px;border-radius:12px;font-size:17px}.grid-img{display:block;max-width:100%;height:auto;margin:auto;border:1px solid #ddd}.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}.answer-row{display:flex;align-items:center;gap:8px;margin:7px 0}.answer-row label{width:35px;font-weight:bold}input{flex:1;padding:9px;border:1px solid #bbb;border-radius:7px;font-size:16px}button{padding:11px 16px;border:0;border-radius:8px;background:#176b87;color:#fff;margin:10px 6px 0 0;font-size:15px}button.alt{background:#b87916}#result{font-weight:bold;margin-top:12px}.back{text-align:center}a{color:#176b87}@media(max-width:650px){.cols{grid-template-columns:1fr}}</style></head><body><div class="wrap">
+<div class="card"><h1>শব্দছক-১</h1><div class="poem">দেশ ডুবেছে দূর্নীতিতে নেতার পাতা ছকে,
+রাজ্যবাসীর ঘুম উড়েছে দারুণ রকম ঠকে।
+এমনি চোখে যায়না দেখা সেই ছকেরই দাগ
+ছকের টাকায় মন্ত্রী সান্ত্রী সবার আছে ভাগ।
+
+এরম অনেক ছকের কথা খুললে টিভি রোজ
+পাবেন, তবে অন্য ছকের দিচ্ছি এখন খোঁজ।
+এই ছকেতে নেই তো কোনো দূর্নীতিরই ছাপ,
+অশ্রু কারোর ঝরবেনা আর হবেনা সেই পাপ।
+
+শব্দ খুঁজুন, শব্দ বাছুন ছকের নিয়মমতো
+পাশাপাশি উপরনীচে ঘর রয়েছে যত,
+জীবনের সব ধাঁধা গুলো নাও যদি বা মেলে
+এ ছক ধাঁধা মিলেই যাবে সঠিক শব্দ পেলে।</div></div>
+<div class="card"><h2>ছকের ছবি</h2><img class="grid-img" src="word-puzzle-1.jpg" alt="শব্দছক-১"></div>
+<div class="card"><h2>উত্তর লিখুন</h2><p>ছবির ছক দেখে আড়াআড়ি ও উপর-নিচের উত্তরগুলি লিখুন।</p><div class="cols"><section><h3>আড়াআড়ি</h3><div class="answer-row"><label>4।</label><input data-answer="লবজ" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>5।</label><input data-answer="তিতাস" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>7।</label><input data-answer="অমরধাম" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>9।</label><input data-answer="আশমান" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>10।</label><input data-answer="জবান" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>11।</label><input data-answer="চমৎকার" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>12।</label><input data-answer="অমরকণ্টক" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>14।</label><input data-answer="হলদে" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>15।</label><input data-answer="মজলিশ" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>16।</label><input data-answer="কমলাকর" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>18।</label><input data-answer="মায়াকানন" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>20।</label><input data-answer="পাটাতন" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>22।</label><input data-answer="পোদ্দার" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>23।</label><input data-answer="বিচারব্যবস্থা" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>25।</label><input data-answer="পরানসখা" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>27।</label><input data-answer="পায়েস" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>28।</label><input data-answer="নিরন্তর" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>29।</label><input data-answer="সাড়া দেওয়া" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>30।</label><input data-answer="রভস" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>31।</label><input data-answer="ময়ুখ" placeholder="উত্তর লিখুন"></div></section><section><h3>উপর-নিচ</h3><div class="answer-row"><label>1।</label><input data-answer="যজমান" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>2।</label><input data-answer="জাতির জনক" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>3।</label><input data-answer="পরভৃত" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>4।</label><input data-answer="লজ্জ্বাশরম" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>6।</label><input data-answer="সঘনগহন" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>7।</label><input data-answer="অর্ধচন্দ্র দেওয়া" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>8।</label><input data-answer="মনের কালি" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>13।</label><input data-answer="করমর্দন" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>15।</label><input data-answer="মহানগর" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>17।</label><input data-answer="কচুপোড়া খাওয়া" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>19।</label><input data-answer="পরশপাথর" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>21।</label><input data-answer="টাকাপয়সা" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>23।</label><input data-answer="বিলাসব্যসন" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>24।</label><input data-answer="বসন্তসখ" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>26।</label><input data-answer="নরদেব" placeholder="উত্তর লিখুন"></div>
+<div class="answer-row"><label>28।</label><input data-answer="নিরাময়" placeholder="উত্তর লিখুন"></div></section></div><button onclick="checkAnswers()">উত্তর যাচাই করুন</button><button class="alt" onclick="showAnswers()">সমাধান দেখুন</button><button class="alt" onclick="clearAll()">সব মুছুন</button><div id="result"></div></div><div class="back"><a href="index.html">← মূল পাতায় ফিরে যান</a></div></div>
+<script>const norm=s=>String(s||'').trim().replace(/[\s।,!?;:]+/g,'');function checkAnswers(){let all=[...document.querySelectorAll('input[data-answer]')],ok=0,filled=0;all.forEach(i=>{if(i.value.trim()){filled++;if(norm(i.value)===norm(i.dataset.answer))ok++;}});document.getElementById('result').textContent=`সঠিক: ${ok} / ${all.length} | পূরণ করেছেন: ${filled}`;}function showAnswers(){document.querySelectorAll('input[data-answer]').forEach(i=>i.value=i.dataset.answer);document.getElementById('result').textContent='সমস্ত সমাধান দেখানো হলো।';}function clearAll(){document.querySelectorAll('input[data-answer]').forEach(i=>i.value='');document.getElementById('result').textContent='';}</script></body></html>
