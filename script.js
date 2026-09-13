@@ -67,7 +67,7 @@ function driveImageURL(url) {
   if (match && match[1]) {
     const id = match[1];
     // এই URL-টি সাধারণত Google Drive-এর ছবিকে সরাসরি দেখায়
-    return `https://drive.google.com/uc?export=view&id=${id}`;
+    return `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
   }
 
   if (/^https?:\/\//i.test(url)) return url;
@@ -149,15 +149,15 @@ async function loadPublishedPosts() {
         ? `<div class="sheet-post-images">${imageURLs.map(url => {
             const idMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
             const id = idMatch ? idMatch[1] : '';
-            const fallback = id
-              ? `https://drive.google.com/thumbnail?id=${id}&sz=w1200`
-              : '';
+            const fallback1 = id ? `https://lh3.googleusercontent.com/d/${id}=w1600` : '';
+            const fallback2 = id ? `https://drive.google.com/uc?export=view&id=${id}` : '';
             return `
             <a href="${escapeHTML(url)}" target="_blank" rel="noopener">
               <img src="${escapeHTML(url)}" alt="${title}" loading="lazy"
                    style="max-width:100%;height:auto;border-radius:12px;margin:12px 0;display:block;"
-                   ${fallback ? `data-fallback="${escapeHTML(fallback)}"` : ''}
-                   onerror="if(this.dataset.fallback && this.src !== this.dataset.fallback){this.src=this.dataset.fallback;}else{this.alt='ছবিটি Google Drive থেকে দেখা যাচ্ছে না';this.style.display='none';}">
+                   ${fallback1 ? `data-fallback1="${escapeHTML(fallback1)}"` : ''}
+                   ${fallback2 ? `data-fallback2="${escapeHTML(fallback2)}"` : ''}
+                   onerror="if(this.dataset.fallback1){this.src=this.dataset.fallback1;this.dataset.fallback1='';}else if(this.dataset.fallback2){this.src=this.dataset.fallback2;this.dataset.fallback2='';}else{this.alt='ছবিটি Google Drive থেকে দেখা যাচ্ছে না';}">
             </a>`;
           }).join('')}</div>`
         : '';
