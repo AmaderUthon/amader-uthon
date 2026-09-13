@@ -142,7 +142,7 @@ async function loadPublishedPosts() {
       const cat = escapeHTML(row[catI] || 'লেখা');
       const contentRaw = String(row[contentI] || '');
       const content = escapeHTML(contentRaw).replace(/\n/g, '<br>');
-      const preview = content.length > 500 ? content.slice(0, 500) + '…' : content;
+      const preview = content;
       const imageURLs = imageI !== null ? getImageURLs(row[imageI]) : [];
 
       const imageHTML = imageURLs.length
