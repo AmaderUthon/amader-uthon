@@ -75,10 +75,13 @@ function driveImageURL(url) {
 
 function getImageURLs(value) {
   if (!value) return [];
-
-  // একই ঘরে একাধিক লিংক থাকলে সেগুলিও ধরবে
-  const links = String(value).match(/https?:\/\/[^\s,]+/g) || [String(value).trim()];
-  return [...new Set(links.map(driveImageURL).filter(Boolean))];
+  const text = String(value).trim();
+  const links = text.match(/https?:\/\/[^\s,;]+/g) || [];
+  const candidates = links.length ? links : [text];
+  return [...new Set(candidates.map(raw => {
+    const url = raw.replace(/[)\]}"'.,]+$/g, '');
+    return driveImageURL(url);
+  }).filter(Boolean))];
 }
 
 async function loadPublishedPosts() {
@@ -98,10 +101,10 @@ async function loadPublishedPosts() {
     }
 
     const headers = rows[0].map(x => x.trim());
-    const normalizedHeaders = headers.map(h => h.toLowerCase().replace(/\s+/g, ''));
+    const normalizedHeaders = headers.map(h => h.toLowerCase().replace(/[\s\u200b\ufeff\r\n]+/g, '').replace(/[—–_\-\/]/g, ''));
 
     const findColumn = (names) => {
-      const wanted = names.map(x => x.toLowerCase().replace(/\s+/g, ''));
+      const wanted = names.map(x => x.toLowerCase().replace(/[\s\u200b\ufeff\r\n]+/g, '').replace(/[—–_\-\/]/g, ''));
       const index = normalizedHeaders.findIndex(h => wanted.includes(h));
       return index >= 0 ? index : null;
     };
